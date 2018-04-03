@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="page-title">
+    <h3 mat-dialog-title> {{data.action}} Project - Are you sure?</h3>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Id </th>
+        <th> Project Name </th>
+        <th> Image </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          {{data.id}}
+        </td>
+        <td>
+          {{data.name}}
+        </td>
+        <td>
+          <img width="100px" height="100px" class="rounded img-thumbnail" src="{{ data.imageUrl}}" title="Image here">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div mat-dialog-actions>
+    <div class="row">
+      <div class="">
+        <button class="btn btn-danger" (click)="onDelete()"> Delete</button>
+        <button class="btn btn-primary" (click)="onClose()"> Close</button>
+      </div>
+    </div>
+  </div>
+</div>

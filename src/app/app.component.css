@@ -1,0 +1,7 @@
+.all-wrap{
+  min-height: 100%;
+}
+.page-wrap{
+    display: flex;
+    flex-direction: column;
+}

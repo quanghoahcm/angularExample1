@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+body{
+    padding-top: 5rem;
+}
+.page-title{
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
