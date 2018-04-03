@@ -1,0 +1,26 @@
+{
+ "name": "nodejas-express",
+ "version": "1.0.0",
+ "description": "Sample Express.js application for purpose of building a REST API",
+ "dependencies": {
+  "babel-cli": "^6.26.0",
+  "babel-preset-env": "^1.6.1",
+  "body-parser": "1.10.2",
+  "express": "4.11.1",
+  "express-validator": "2.8.0",
+  "msnodesqlv8": "^0.5.4",
+  "mssql": "^4.1.0"
+ },
+ "babel": {
+  "presets": [
+   "env"
+  ]
+ },
+ "scripts": {
+  "server": "nodemon --exec npm run babel-node --  ./index.js",
+  "babel-node": "babel-node --presets=env"
+ },
+ "devDependencies": {
+  "nodemon": "^1.17.2"
+ }
+}
