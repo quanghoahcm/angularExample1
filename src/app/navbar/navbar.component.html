@@ -7,12 +7,15 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed"  > 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link text-white" routerLink="">Home
+        <a class="nav-link text-white" (click)="isCollapsed = !isCollapsed" routerLink="">Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link text-white" routerLink="projects">Project</a>
+          <a  class="nav-link text-white" (click)="isCollapsed = !isCollapsed" routerLink="category">Category</a>
+        </li>
+      <li class="nav-item">
+        <a  class="nav-link text-white" (click)="isCollapsed = !isCollapsed" routerLink="projects">Project</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

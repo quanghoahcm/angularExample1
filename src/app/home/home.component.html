@@ -1,27 +1,28 @@
-<form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
-  <fieldset formGroupName="name">
-    <div class="form-group" [ngClass]="{
-        'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
-        'has-success': firstName.valid && (firstName.dirty || firstName.touched)
-      }">
-      <label>First Name</label>
-      <input type="text" 
-            class="form-control"
-            formControlName="firstName"
-            required>
-      <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-        <p class="text-warning" *ngIf="firstName.errors.required">First Name is required</p>
+<div class="container">
+  <form class="form-horizontal" [formGroup]="categoryform">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Name:</span>
+        </div>
+        <div class="input-group-prepend">
+          <input type="text" id="name" class="form-control" formControlName="name">
+        </div>
+        <div class="error" *ngIf="!categoryform.get('name').valid && categoryform.get('name').touched">
+          Name is required.
+        </div>
       </div>
-      <!--
-        <pre>Valid? {{ myform.controls.name.controls.firstName.valid }}</pre>
-        <pre>Dirty? {{ myform.controls.name.controls.firstName.dirty }}</pre>
-      -->
     </div>
-    <div class="row flex">
-<button class="btn btn-primary" type="submit">submit</button>
-<button class="btn btn-warning" (click)="onCancel()" type="button">cancel</button>
+    <hr>
+
+    <h5>{{msg}}</h5>
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="onSubmit()" type="button">Create</button> |
+      <button class="btn btn-warning" (click)="onCancel()" type="button">Cancel</button>
+    </div>
+  </form>
+
+
+  <input [(ngModel)]="category.name">
+  <button class="btn btn-primary" (click)="ngSubmit()" type="button">submit</button> 
 </div>
-    <div id="circle"></div>
-    <button class="btn" (click)="doIt()">Do It</button>
-  </fieldset>
-</form>

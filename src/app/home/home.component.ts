@@ -1,66 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-
-
- interface IPos {
-  
-    x: number,
-    y: number
-  
- }
+import { Category } from "../models/category.model";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  myform: FormGroup;
-  firstName: FormControl;
-  source: Observable<IPos>;
-  circle = document.getElementById("circle");
-  constructor(){
-    
+  category = new Category(1, "Tin Tuc")
+  categoryform: FormGroup;
+  private formSumitAttempt: boolean;
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
   }
+  msg = "Enter category name:";
   ngOnInit() {
-    this.createFormControls();
-    this.createForm();
-    this.doIt();
-  }
-  onSubmit(){
-    
-  }
-  onCancel(){
-    this.myform.reset();
-  }
+    this.createCategoryForm();
 
-
-  doIt(){
-    this.source = Observable.fromEvent(document,"mousemove")
-    .map((e:MouseEvent) => {      
-      return{
-        x:e.clientX,
-        y: e.clientY
-      }
-    })
-   .filter(value => value.x <500)
-   .delay(300);  
-    this.source.subscribe(     
-      e=> console.log(e),
-           
-    );
   }
+  onSubmit() {
+    console.log(this.categoryform.controls['name'].value);
+    this.formSumitAttempt = true;
+    if (this.categoryform.valid) {
 
-  createFormControls() {
-    this.firstName = new FormControl('', Validators.required);
+      this.msg = this.categoryform.controls['name'].value /// Get value from Form Control    
+      let newCategory = new Category(1, this.msg)   
+      console.log(newCategory);  
+    }
+    else {
+
+    }
   }
+  ngSubmit() {
 
-  createForm() {
-    this.myform = new FormGroup({
-      name: new FormGroup({
-        firstName: this.firstName,
-      }),
+    console.log(this.category.name);
+  }
+  onCancel() {
+    this.categoryform.reset();
+    this.formSumitAttempt = false;
+  }
+  createCategoryForm() {
+    this.categoryform = this.formBuilder.group({
+      name: [null, Validators.required]
     });
   }
 }

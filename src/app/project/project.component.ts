@@ -17,6 +17,7 @@ import { map } from 'rxjs/operators/map';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
+
   /* Paging */
   displayedColumns = ['id', 'name', 'imageUrl', 'actions'];
   index: number;

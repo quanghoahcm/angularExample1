@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="col-md-12">
+    <ul class="list-group">
+
+      <li href="#" class="list-group-item list-group-item-action active"> Category </li>
+      <li href="#" class="list-group-item list-group-item-action" *ngFor='let item of categoriesRef | async '> {{item.name}} </li>
+         </ul>
+         <form (submit)="saveCategory($event,box)">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Name:</span>
+                </div>
+                <div class="input-group-prepend">
+                  <input  (keyup)="update(box.value)" (blur)="update(box.value)" #box type="text" id="name" class="form-control">
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="!value">Send</button>
+              </div>
+          </form>
+     
+  </div>
+</div>

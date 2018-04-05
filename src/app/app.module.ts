@@ -19,6 +19,13 @@ import { ProjectComponent } from './project/project.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
+import { AngularFireModule } from "angularfire2";
+import { environment } from '../environments/environment.prod';
+import { CategoryComponent } from './category/category.component';
+import { CategoryModule } from './module/category.module';
+import { CategoryService } from './services/category.service';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+export const firebaseConfig = environment.firebaseConfig;
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +35,7 @@ import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
     NavbarComponent,
     ProjectComponent,
     HomeComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,10 @@ import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
     BrowserAnimationsModule,
     NgbModule.forRoot(),
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CategoryModule,
+    AngularFireModule.initializeApp(firebaseConfig,'projectsmanager'),
+    AngularFireDatabaseModule
   ],
   exports:[
     AppRoutingModule
@@ -45,7 +56,7 @@ import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
   providers: [
     ProjectService,
     HttpClient,
-    // {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'checked'}
+    CategoryService
   ],
   entryComponents:[
     EditDialogComponent,
