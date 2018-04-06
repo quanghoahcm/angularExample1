@@ -38,32 +38,22 @@
         <div *ngIf="topics">
           <em>Recent topics: {{ topics }}</em>
         </div>
+        <form id="image-form" action="#">
+          <input id="mediaCapture" type="file" accept="image/*,capture=camera" (change)="saveImageMessage($event)">
+          <button id="submitImage" title="Add an image" (click)="onImageClick($event)" class="btn btn-sm ">
+            <i class="material-icons">image</i>
+          </button>
+        </form>
 
-        <div class="input-group mb-3">
-          <div class="row">
-            <div class="col-sm-10">
-              <div class="form-group ">
-                <div class="input-group-prepend">
-                  <form id="image-form" action="#">
-                    <input id="mediaCapture" type="file" accept="image/*,capture=camera" (change)="saveImageMessage($event)">
-                    <button id="submitImage" title="Add an image" (click)="onImageClick($event)" class="btn btn-sm ">
-                      <i class="material-icons">image</i>
-                    </button>
-                  </form>
-                </div>
-                <form id="message-form" (submit)="saveMessage($event, box)">
-                  <div class="input-group-prepend">
-                    <input #box class="form-control" type="text" id="message" (keyup)="update(box.value)" (blur)="update(box.value)" placeholder="Message...">
-                  </div>
-                  <button id="submit" [disabled]="!value" type="submit" class="btn btn-primary btn-sm">
-                    Send
-                  </button>
-                </form>
-              </div>
-            </div>
+        <form id="message-form" (submit)="saveMessage($event, box)">
+          <div class="input-group-prepend">
+            <input #box class="form-control form-control-sm" type="text" id="message" (keyup)="update(box.value)" (blur)="update(box.value)" placeholder="Message...">
           </div>
-        </div>
+          <button id="submit" [disabled]="!value" type="submit" class="btn btn-primary btn-sm">
+            Send
+          </button>
+        </form>
       </div>
 
     </div>
-  </div>
+  </div> 

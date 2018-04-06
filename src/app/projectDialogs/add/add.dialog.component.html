@@ -1,6 +1,6 @@
 <div class="container">
   <h3 mat-dialog-title> {{data.action}} Project</h3>
-  <form class="form-control" (ngSubmit)="submit()" #formControl="ngForm">
+  <form class="form-control" #formControl="ngForm">
     <input type="hidden" name="id" [(ngModel)]="data.id">
     <div class="form-group">
       <label>Name Project:</label>
