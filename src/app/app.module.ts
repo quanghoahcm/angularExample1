@@ -18,13 +18,16 @@ import { ProjectComponent } from './project/project.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
-import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
+import { MAT_CHECKBOX_CLICK_ACTION, MatSnackBarModule } from '@angular/material';
 import { AngularFireModule } from "angularfire2";
 import { environment } from '../environments/environment.prod';
 import { CategoryComponent } from './category/category.component';
 import { CategoryModule } from './module/category.module';
 import { CategoryService } from './services/category.service';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { ChatComponent } from './chat/chat.component';
+import { StylizePipe } from './chat/stylize.pipe';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 export const firebaseConfig = environment.firebaseConfig;
 @NgModule({
   declarations: [
@@ -36,19 +39,23 @@ export const firebaseConfig = environment.firebaseConfig;
     ProjectComponent,
     HomeComponent,
     CategoryComponent,
+    ChatComponent,
+    StylizePipe
   ],
   imports: [
     BrowserModule,
     SharedModule,
     FormsModule,
     MaterialModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
     CategoryModule,
     AngularFireModule.initializeApp(firebaseConfig,'projectsmanager'),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   exports:[
     AppRoutingModule
