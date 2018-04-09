@@ -18,7 +18,8 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { MatSnackBar } from '@angular/material';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase'; 
+import { filter } from 'rxjs/operator/filter';
 
 const LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 const PROFILE_PLACEHOLDER_IMAGE_URL = '/assets/images/profile_placeholder.png';
@@ -79,6 +80,15 @@ export class ChatComponent {
             messageList.scrollTop = messageList.scrollHeight;
             document.getElementById('message').focus();
           }, 500);
+          if (user != null) {
+            user.providerData.forEach(function (profile) {
+              console.log("Sign-in provider: " + profile.providerId);
+              console.log("  Provider-specific UID: " + profile.uid);
+              console.log("  Name: " + profile.displayName);
+              console.log("  Email: " + profile.email);
+              console.log("  Photo URL: " + profile.photoURL);
+            });
+          }
         });
 
         // We save the Firebase Messaging Device token and enable notifications.
@@ -152,7 +162,7 @@ export class ChatComponent {
   saveImageMessage(event: any) {
     event.preventDefault();
     const file = event.target.files[0];
-
+    console.log( file)
     // Clear the selection in the file picker input.
     const imageForm = <HTMLFormElement>document.getElementById('image-form');
     imageForm.reset();

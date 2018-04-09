@@ -112,7 +112,7 @@ export class ProjectComponent implements OnInit {
 
   }
 
-  add(item: Project) {
+  Create(item: Project) {
     // var newId = this.projectsList.length + 1;
 
     const dialogRef = this.dialog.open(AddDialogComponent, {

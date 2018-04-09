@@ -53,7 +53,7 @@ export const firebaseConfig = environment.firebaseConfig;
     AppRoutingModule,
     ReactiveFormsModule,
     CategoryModule,
-    AngularFireModule.initializeApp(firebaseConfig,'projectsmanager'),
+    AngularFireModule.initializeApp(firebaseConfig),    
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
