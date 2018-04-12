@@ -14,12 +14,39 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder
   ) {
+    this.appendItems(0, this.sum);
   }
   msg = "Enter category name:";
   ngOnInit() {
     this.createCategoryForm();
 
   }
+
+  array = [];
+  sum = 100;
+  throttle = 300;
+  scrollDistance = 1;  
+  addItems(startIndex, endIndex, _method) {
+    for (let i = 0; i < this.sum; ++i) {
+      this.array[_method]([i, ' '].join(''));
+    }
+  }
+  
+  appendItems(startIndex, endIndex) {
+    this.addItems(startIndex, endIndex, 'push');
+  }
+
+  onScrollDown (ev) {
+    console.log('scrolled down!!', ev);
+    // add another 20 items
+    const start = this.sum;
+    this.sum += 20;
+    this.appendItems(start, this.sum);
+    console.log(this.array)
+  }
+
+
+
   onSubmit() {
     console.log(this.categoryform.controls['name'].value);
     this.formSumitAttempt = true;

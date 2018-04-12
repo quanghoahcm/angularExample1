@@ -24,5 +24,14 @@
 
 
   <input [(ngModel)]="category.name">
-  <button class="btn btn-primary" (click)="ngSubmit()" type="button">submit</button> 
+  <button class="btn btn-primary" (click)="ngSubmit()" type="button">submit</button>
+
+
+  <div class="search-results" data-infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScrollDown()">
+    <p *ngFor="let i of array">
+      {{ i }}
+    </p>
+  </div>
+
 </div>

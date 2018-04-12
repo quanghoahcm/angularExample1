@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { InfiniteScrollModule  } from "ngx-infinite-scroll";
 
 import { AppComponent } from './app.component';
 import { ProjectService } from './services/project.service';
@@ -55,7 +55,8 @@ export const firebaseConfig = environment.firebaseConfig;
     CategoryModule,
     AngularFireModule.initializeApp(firebaseConfig),    
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    InfiniteScrollModule
   ],
   exports:[
     AppRoutingModule
