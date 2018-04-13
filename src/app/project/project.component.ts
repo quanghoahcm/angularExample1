@@ -59,6 +59,10 @@ export class ProjectComponent implements OnInit {
   }
   onSelect(project){
     this.router.navigate(['/projects-detail',project.id])
+    localStorage.setItem('1','abcd')
+
+    console.log(localStorage.getItem('1'))
+
   }
   getProjectsPaging(page: number, pageSize: number) {
     page = page ? page : 0;

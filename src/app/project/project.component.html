@@ -49,7 +49,12 @@
           Name
         </mat-header-cell>
         <mat-cell *matCellDef="let row"    >
-           <a routerLink="/project-detail/{{row.id}}"  class="row-hover" >  {{row.name}} </a>
+           <!-- <a 
+             routerLink  ="/project-detail/{{row.id}}" 
+           (click)="onSelect()"
+           class="row-hover" >  {{row.name}} </a> -->
+           <a   (click)="onSelect(row)"
+           class="row-hover" >  {{row.name}} </a>
         </mat-cell>
       </ng-container>
 
