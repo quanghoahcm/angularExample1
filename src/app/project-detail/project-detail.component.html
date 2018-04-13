@@ -1,3 +1,14 @@
-<p>
-  project-detail works!
-</p>
+<div class="container">
+
+  <div class="col-md-12">
+    <p>
+      project-detail works! {{projectId}}
+    </p>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="project.name">
+    </div>
+  </div>
+  <div *ngIf="errorMsg" class="alert alert-danger" >
+    {{errorMsg}}
+  </div>
+</div>

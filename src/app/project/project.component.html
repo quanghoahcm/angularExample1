@@ -48,8 +48,8 @@
         <mat-header-cell *matHeaderCellDef>
           Name
         </mat-header-cell>
-        <mat-cell *matCellDef="let row"  (click)="onSelect(row)" >
-           <p  class="row-hover" >  {{row.name}} </p>
+        <mat-cell *matCellDef="let row"    >
+           <a routerLink="/project-detail/{{row.id}}"  class="row-hover" >  {{row.name}} </a>
         </mat-cell>
       </ng-container>
 

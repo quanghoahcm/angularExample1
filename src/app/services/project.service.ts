@@ -32,6 +32,11 @@ export class ProjectService {
   }
 
   /* Get from Nodejs Express */
+  
+  getProjectById(id: number):Observable<any>{
+    return this.http.get(this.dataUrl2 +'/' +id, this.httpOptions)
+                .catch(this.errorHandler);
+  }
 
   getProjects2(): Observable<any> {
     return this.http.get(this.dataUrl2)

@@ -12,8 +12,11 @@ const routes: Routes = [
   {
     path: 'projects', component: ProjectComponent
   },
+  // {
+  //     path:'projects/:id', component:ProjectDetailComponent
+  // },
   {
-      path:'projects/:id', component:ProjectDetailComponent
+    path:'project-detail/:id',component:ProjectDetailComponent
   },
   {
     path: 'chat', component: ChatComponent

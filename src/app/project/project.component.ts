@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project',
@@ -38,6 +38,7 @@ export class ProjectComponent implements OnInit {
   constructor(
     private serviveProject: ProjectService,
     private dialog: MatDialog,
+    private router: Router
   ) {
     this.projectCtrl = new FormControl();
     this.filteredProject = this.projectCtrl.valueChanges.debounceTime(400)
@@ -55,6 +56,9 @@ export class ProjectComponent implements OnInit {
   }
   ngOnInit() {
     this.getProjectsPaging(0, this.pageSize);
+  }
+  onSelect(project){
+    this.router.navigate(['/projects-detail',project.id])
   }
   getProjectsPaging(page: number, pageSize: number) {
     page = page ? page : 0;
