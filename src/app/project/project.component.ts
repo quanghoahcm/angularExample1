@@ -34,7 +34,7 @@ export class ProjectComponent implements OnInit {
   project: Project;
   submitted: boolean = false;
   stringSearch: string;
-
+  public errorMsg;
   constructor(
     private serviveProject: ProjectService,
     private dialog: MatDialog,
@@ -58,13 +58,16 @@ export class ProjectComponent implements OnInit {
   }
   getProjectsPaging(page: number, pageSize: number) {
     page = page ? page : 0;
-    pageSize = pageSize ? pageSize : 10;
+    pageSize = pageSize ? pageSize : 10;  
     this.serviveProject.getProjectsPaging2(page, pageSize).
       subscribe(projectsList => {
         console.log(projectsList);
         this.projectsList = projectsList.recordset;
-        this.length = projectsList.totalElements;
-      });
+        this.length = projectsList.totalElements;    
+      },
+      error=> this.errorMsg = error +" -- Server error. --"     
+    );
+  
   }
   onEnter(event) {
     this.message = event.target.value;

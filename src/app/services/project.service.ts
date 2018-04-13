@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -35,9 +35,11 @@ export class ProjectService {
 
   getProjects2(): Observable<any> {
     return this.http.get(this.dataUrl2)
+           .catch(this.errorHandler);
   }
   getProjectsPaging2(page?: number, pageSize?: number): Observable<any> {
-    return this.http.get(this.dataUrl2 + '?page=' + page + '&pagesize=' + pageSize);
+    return this.http.get(this.dataUrl2 + '?page=' + page + '&pagesize=' + pageSize)
+              .catch(this.errorHandler);
   }
   // search2(stringSearch: string, page?: number, pageSize?: number): Observable<any> {
   //   return this.http.get(this.dataUrl2 + 'page=' + page + '&pagesize=' + pageSize + '&term=' + stringSearch);
@@ -66,7 +68,9 @@ export class ProjectService {
   search2(term:string):Observable<any>{
     return this.http.get(this.dataUrl2+'/search/'+term);
   }
-  
+   errorHandler(error : HttpErrorResponse){
+     return Observable.throw(error.message|| "Server Error");
+   }
 
   /* From Nghia Server */
   getProjectsPaging(page?: number, pageSize?: number): Observable<any> {

@@ -28,6 +28,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ChatComponent } from './chat/chat.component';
 import { StylizePipe } from './chat/stylize.pipe';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProjectDetailComponent } from "./project-detail/project-detail.component";
 export const firebaseConfig = environment.firebaseConfig;
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ export const firebaseConfig = environment.firebaseConfig;
     HomeComponent,
     CategoryComponent,
     ChatComponent,
-    StylizePipe
+    StylizePipe,
+    PageNotFoundComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,
